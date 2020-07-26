@@ -1,7 +1,10 @@
 # IDE configuration files
 .idea
 
-# Logs
+# Output files
+*.txt
+
+# Logger
 logs
 *.log
 npm-debug.log*
