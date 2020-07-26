@@ -1,6 +1,6 @@
 {
   "excludeExternals": false,
-  "name": "node-discord",
+  "name": "storage",
   "mode": "file",
   "theme": "default",
   "excludeNotExported": true,
