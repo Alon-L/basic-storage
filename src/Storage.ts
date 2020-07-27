@@ -169,6 +169,9 @@ class Storage<TValue = unknown> {
             throw new Error('The serialized data in your log file is badly formatted!');
           }
 
+          // Check whether the item was already loaded
+          if (this.hasItem(key)) continue;
+
           // Add the removed key to the removed keys array
           this.removedKeys.push(key);
 
