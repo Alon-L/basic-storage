@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Encryption | storage</title>
+	<title>Operation | storage</title>
 	<meta name="description" content="Documentation for storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="encryption.html">Encryption</a>
+					<a href="operation.html">Operation</a>
 				</li>
 			</ul>
-			<h1>Interface Encryption</h1>
+			<h1>Enumeration Operation</h1>
 		</div>
 	</div>
 </header>
@@ -67,95 +67,55 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for <a href="../classes/encrypt.html">Encrypt</a> and <a href="../classes/decrypt.html">Decrypt</a>.
-						Contains general properties and methods used for encryption</p>
+						<p>All possible data manipulation operations</p>
 					</div>
 				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">Encryption</span>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/decrypt.html" class="tsd-signature-type">Decrypt</a></li>
-					<li><a href="../classes/encrypt.html" class="tsd-signature-type">Encrypt</a></li>
-				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="encryption.html#key" class="tsd-kind-icon">key</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="encryption.html#string" class="tsd-kind-icon">string</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="operation.html#remove" class="tsd-kind-icon">Remove</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="operation.html#set" class="tsd-kind-icon">Set</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="key" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> key</h3>
-					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>Remove</h3>
+					<div class="tsd-signature tsd-kind-icon">Remove<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;R:&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Encryption.ts#L9">encryption/Encryption.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/LogSerializer.ts#L15">LogSerializer.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The key for the cipher / decipher</p>
+							<p>Remove an item from the Storage</p>
 						</div>
 					</div>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="string" class="tsd-anchor"></a>
-					<h3>string</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">string<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Encryption.ts#L16">encryption/Encryption.ts:16</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Encrypts / decrypts a given string</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>str: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The string to encrypt / decrypt</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="set" class="tsd-anchor"></a>
+					<h3>Set</h3>
+					<div class="tsd-signature tsd-kind-icon">Set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;S:&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/LogSerializer.ts#L10">LogSerializer.ts:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Add an item to the Storage, identified by its key</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -169,9 +129,21 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/operation.html" class="tsd-kind-icon">Operation</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum">
+						<a href="operation.html" class="tsd-kind-icon">Operation</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="operation.html#remove" class="tsd-kind-icon">Remove</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="operation.html#set" class="tsd-kind-icon">Set</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="../classes/checksum.html" class="tsd-kind-icon">Checksum</a>
 					</li>
@@ -199,32 +171,20 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/storagefile.html" class="tsd-kind-icon">Storage<wbr>File</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="encryption.html" class="tsd-kind-icon">Encryption</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="encryption.html#key" class="tsd-kind-icon">key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="encryption.html#string" class="tsd-kind-icon">string</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="loggerauth.html" class="tsd-kind-icon">Logger<wbr>Auth</a>
+						<a href="../interfaces/encryption.html" class="tsd-kind-icon">Encryption</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="loggeroptions.html" class="tsd-kind-icon">Logger<wbr>Options</a>
+						<a href="../interfaces/loggerauth.html" class="tsd-kind-icon">Logger<wbr>Auth</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="storageoptions.html" class="tsd-kind-icon">Storage<wbr>Options</a>
+						<a href="../interfaces/loggeroptions.html" class="tsd-kind-icon">Logger<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/storageoptions.html" class="tsd-kind-icon">Storage<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="storagepair.html" class="tsd-kind-icon">Storage<wbr>Pair</a>
+						<a href="../interfaces/storagepair.html" class="tsd-kind-icon">Storage<wbr>Pair</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#iv" class="tsd-kind-icon">iv</a>

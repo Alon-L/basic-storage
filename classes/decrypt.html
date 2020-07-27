@@ -128,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/0f6eff3/src/encryption/Decrypt.ts#L14">encryption/Decrypt.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Decrypt.ts#L14">encryption/Decrypt.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -151,7 +151,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/encryption.html">Encryption</a>.<a href="../interfaces/encryption.html#key">key</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/0f6eff3/src/encryption/Decrypt.ts#L14">encryption/Decrypt.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Decrypt.ts#L14">encryption/Decrypt.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -173,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/0f6eff3/src/encryption/Decrypt.ts#L35">encryption/Decrypt.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Decrypt.ts#L35">encryption/Decrypt.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -199,7 +199,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/encryption.html">Encryption</a>.<a href="../interfaces/encryption.html#string">string</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/0f6eff3/src/encryption/Decrypt.ts#L25">encryption/Decrypt.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/c9699b5/src/encryption/Decrypt.ts#L25">encryption/Decrypt.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,6 +232,15 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/operation.html" class="tsd-kind-icon">Operation</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="checksum.html" class="tsd-kind-icon">Checksum</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="checksumdependentfile.html" class="tsd-kind-icon">Checksum<wbr>Dependent<wbr>File</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -257,10 +266,19 @@
 						<a href="encrypt.html" class="tsd-kind-icon">Encrypt</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="file.html" class="tsd-kind-icon">File</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="logserializer.html" class="tsd-kind-icon">Log<wbr>Serializer</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="logger.html" class="tsd-kind-icon">Logger</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="storage.html" class="tsd-kind-icon">Storage</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="storagefile.html" class="tsd-kind-icon">Storage<wbr>File</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/encryption.html" class="tsd-kind-icon">Encryption</a>
@@ -271,11 +289,17 @@
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/loggeroptions.html" class="tsd-kind-icon">Logger<wbr>Options</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#storageoptions" class="tsd-kind-icon">Storage<wbr>Options</a>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/storageoptions.html" class="tsd-kind-icon">Storage<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/storagepair.html" class="tsd-kind-icon">Storage<wbr>Pair</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#iv" class="tsd-kind-icon">iv</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#operationlength" class="tsd-kind-icon">operation<wbr>Length</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#separator" class="tsd-kind-icon">separator</a>
@@ -306,6 +330,13 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
