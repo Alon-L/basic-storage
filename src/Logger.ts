@@ -1,7 +1,6 @@
-import { promises as fs } from 'fs';
 import Decrypt from './encryption/Decrypt';
 import Encrypt from './encryption/Encrypt';
-import { genKey } from './encryption/utils';
+import File from './files/File';
 
 /**
  * Options for the Logger instance
@@ -10,7 +9,7 @@ export interface LoggerOptions {
   /**
    * The name of the logs file
    */
-  filename: string;
+  filename?: string;
 }
 
 /**
@@ -34,6 +33,11 @@ export interface LoggerAuth {
  */
 class Logger {
   /**
+   * The file that stores all the logs
+   */
+  public readonly file: File;
+
+  /**
    * General options for this instance
    */
   public readonly options: Required<LoggerOptions>;
@@ -41,18 +45,16 @@ class Logger {
   private readonly encrypt: Encrypt;
   private readonly decrypt: Decrypt;
 
-  constructor(options: Partial<LoggerOptions>, auth: LoggerAuth) {
+  constructor(options: LoggerOptions, key: Buffer) {
+    this.file = new File(options.filename || './db.logs');
+
     this.options = {
-      // Filename defaults to 'logs'
-      filename: './logs',
+      filename: this.file.filename,
       ...options,
     };
 
-    // Generate a key using the given password and salt
-    this.key = genKey(auth.password, auth.salt);
-
-    this.encrypt = new Encrypt(this.key);
-    this.decrypt = new Decrypt(this.key);
+    this.encrypt = new Encrypt(key);
+    this.decrypt = new Decrypt(key);
   }
 
   /**
@@ -61,7 +63,7 @@ class Logger {
    * @returns {Promise<void>}
    */
   public write(log: string): Promise<void> {
-    return fs.appendFile(this.options.filename, this.encrypt.string(log));
+    return this.file.append(this.encrypt.string(log));
   }
 
   /**
@@ -69,11 +71,11 @@ class Logger {
    * The content is reversely read line by line
    */
   public async *read(): AsyncGenerator<string> {
-    const input = await this.input;
+    const content = await this.file.read();
 
     // Split by new lines
     // Note: base64 can not include native line breaks
-    const lines = input.split('\n');
+    const lines = content.split('\n');
 
     // Remove last blank line
     lines.pop();
