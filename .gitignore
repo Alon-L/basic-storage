@@ -2,6 +2,7 @@
 .idea
 
 # Output files
+lib
 *.txt
 db
 db.*
