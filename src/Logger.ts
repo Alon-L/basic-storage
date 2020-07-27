@@ -85,22 +85,6 @@ class Logger {
       yield this.decrypt.string(line);
     }
   }
-
-  /**
-   * Clears the content of the log file
-   * @returns {Promise<void>}
-   */
-  public clear(): Promise<void> {
-    return fs.truncate(this.options.filename, 0);
-  }
-
-  /**
-   * Reads the content of the logs file
-   * @returns {Promise<string>}
-   */
-  private get input(): Promise<string> {
-    return fs.readFile(this.options.filename, 'utf8');
-  }
 }
 
 export default Logger;
