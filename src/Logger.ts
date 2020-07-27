@@ -1,5 +1,4 @@
-import { createReadStream, promises as fs, ReadStream } from 'fs';
-import readline from 'readline';
+import { promises as fs } from 'fs';
 import Decrypt from './encryption/Decrypt';
 import Encrypt from './encryption/Encrypt';
 import { genKey } from './encryption/utils';
@@ -72,18 +71,19 @@ class Logger {
 
   /**
    * Starts reading from the log file.
-   * The content is read line by line
+   * The content is reversely read line by line
    */
   public async *read(): AsyncGenerator<string> {
-    const { input } = this;
+    const input = await this.input;
 
-    // Read the log file line by line
-    const rl = readline.createInterface({
-      input,
-      crlfDelay: Infinity,
-    });
+    // Split by new lines
+    // Note: base64 can not include native line breaks
+    const lines = input.split('\n');
 
-    for await (const line of rl) {
+    // Remove last blank line
+    lines.pop();
+
+    for await (const line of lines.reverse()) {
       // Yield the decrypted log line
       yield this.decrypt.string(line);
     }
@@ -98,11 +98,11 @@ class Logger {
   }
 
   /**
-   * Creates a new read stream for the log file
-   * @returns {ReadStream}
+   * Reads the content of the logs file
+   * @returns {Promise<string>}
    */
-  private get input(): ReadStream {
-    return createReadStream(this.options.filename);
+  private get input(): Promise<string> {
+    return fs.readFile(this.options.filename, 'utf8');
   }
 }
 

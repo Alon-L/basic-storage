@@ -11,10 +11,12 @@ test('logs write & read', async () => {
 
   const read = logger.read();
 
-  expect((await read.next()).value).toBe(logs[0]);
-  expect((await read.next()).value).toBe(logs[1]);
   expect((await read.next()).value).toBe(logs[2]);
+  expect((await read.next()).value).toBe(logs[1]);
+  expect((await read.next()).value).toBe(logs[0]);
   expect((await read.next()).done).toBeTruthy();
+});
 
+afterAll(async () => {
   await logger.clear();
 });
