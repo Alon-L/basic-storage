@@ -41,6 +41,11 @@ export interface StoragePair<T> {
  */
 class Storage<TValue = unknown> {
   /**
+   * The key used for encrypting the log file and storage file
+   */
+  public readonly key: Buffer;
+
+  /**
    * The cache this storage contains
    */
   private readonly cache: Map<string, TValue>;
@@ -70,7 +75,10 @@ class Storage<TValue = unknown> {
    */
   private readonly removedKeys: string[] = [];
 
-  constructor(options: Partial<StorageOptions>, auth: LoggerAuth) {
+  constructor(options: StorageOptions, auth: LoggerAuth) {
+    // Generate a key using the given password and salt
+    this.key = genKey(auth.password, auth.salt);
+
     this.cache = new Map<string, TValue>();
 
     this.logger = new Logger(options, this.key);

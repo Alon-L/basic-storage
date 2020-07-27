@@ -36,12 +36,7 @@ class Logger {
   /**
    * General options for this instance
    */
-  private readonly options: LoggerOptions;
-
-  /**
-   * The key to be passed to ciphers and deciphers for the logs' encryption
-   */
-  private readonly key: Buffer;
+  public readonly options: Required<LoggerOptions>;
 
   private readonly encrypt: Encrypt;
   private readonly decrypt: Decrypt;
