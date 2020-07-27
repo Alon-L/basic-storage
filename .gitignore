@@ -3,6 +3,8 @@
 
 # Output files
 *.txt
+db
+db.*
 
 # Logger
 logs
