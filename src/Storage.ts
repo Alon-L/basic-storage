@@ -265,7 +265,8 @@ class Storage<TValue = unknown> {
    */
   public async clear(): Promise<void> {
     await this.logger.file.clear();
-    return this.cache.clear();
+    await this.cache.clear();
+    await this.saveJSON();
   }
 
   /**
