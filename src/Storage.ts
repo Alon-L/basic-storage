@@ -3,8 +3,42 @@ import Logger, { LoggerOptions, LoggerAuth } from './Logger';
 /**
  * Options for initializing a {@link Storage} instance
  */
-export type StorageOptions = LoggerOptions;
+export interface StorageOptions {
+  /**
+   * The name of the storage output file
+   */
+  filename?: string;
 
+  /**
+   * The options for the storage's logger
+   */
+  logger?: LoggerOptions;
+
+  /**
+   * The parser used for stringifying and parsing the saved logs
+   */
+  parser?: JSON;
+}
+
+/**
+ * Type for key and value pairs found in the storage cache
+ */
+export interface StoragePair<T> {
+  /**
+   * The item's key
+   */
+  key: string;
+
+  /**
+   * The item's value
+   */
+  value: T;
+}
+
+/**
+ * The main interface of the library.
+ * Capable of caching, saving and loading storage data
+ */
 class Storage<TValue = unknown> {
   /**
    * The cache this storage contains
@@ -17,8 +51,17 @@ class Storage<TValue = unknown> {
   private readonly logger: Logger;
 
   /**
-   * The parser for the storage.
-   * Stringifies and parses the values received in {@link setItem}
+   * The options for this storage instance
+   */
+  public readonly options: Required<StorageOptions>;
+
+  /**
+   * The file that contains the storage data
+   */
+  private readonly file: StorageFile;
+
+  /**
+   * LogSerializer instance to serialize and deserialize logs
    */
   private readonly serializer: LogSerializer<TValue>;
 
