@@ -1,6 +1,7 @@
 import Logger from '../src/Logger';
+import { genKey } from '../src/encryption/utils';
 
-const logger = new Logger({ filename: './output.txt' }, { password: 'HelloWorld!', salt: 'salt' });
+const logger = new Logger({}, genKey('HelloWorld!', 'salt'));
 
 const logs = ['Hello!', 'Hello 2!', 'Hello 3!'];
 
@@ -18,5 +19,5 @@ test('logs write & read', async () => {
 });
 
 afterAll(async () => {
-  await logger.clear();
+  await logger.file.clear();
 });
