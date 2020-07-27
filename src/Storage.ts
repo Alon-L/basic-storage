@@ -1,4 +1,7 @@
-import Logger, { LoggerOptions, LoggerAuth } from './Logger';
+import LogSerializer, { Operation } from './LogSerializer';
+import Logger, { LoggerAuth, LoggerOptions } from './Logger';
+import { genKey } from './encryption/utils';
+import StorageFile from './files/StorageFile';
 
 /**
  * Options for initializing a {@link Storage} instance
@@ -230,13 +233,44 @@ class Storage<TValue = unknown> {
   }
 
   /**
-   * Serializes a key and value pair into the writable format: `"<KEY>":<VALUE>`
-   * @param {string} key The key
-   * @param {T} value The value
-   * @returns {string}
+   * Removes an item from the storage
+   * @param {string} key The key of the item
+   * @param {boolean} log Whether to log the removed item
    */
-  private serialize<T extends TValue>(key: string, value: T): string {
-    return `"${key}":${this.parser.stringify(value)}`;
+  public async removeItem(key: string, log = true): Promise<void> {
+    this.cache.delete(key);
+
+    if (log) {
+      await this.logger.write(Operation.Remove + this.serializer.serializeRemove(key));
+    }
+  }
+
+  /**
+   * Clears the cached data in the storage
+   * @returns {void}
+   */
+  public async clear(): Promise<void> {
+    await this.logger.file.clear();
+    return this.cache.clear();
+  }
+
+  /**
+   * The size of the storage's cache
+   * @type {number}
+   */
+  public get size(): number {
+    return this.cache.size;
+  }
+
+  /**
+   * Converts the cached map into JSON
+   * @returns {Record<string, TValue>}
+   */
+  public toJSON(): Record<string, TValue> {
+    return [...this.cache].reduce((obj, [key, val]) => {
+      obj[key] = val;
+      return obj;
+    }, {} as Record<string, TValue>);
   }
 }
 
