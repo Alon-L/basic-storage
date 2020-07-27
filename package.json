@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
+  "type": "lib/index.d.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
