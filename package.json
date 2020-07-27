@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Lite and efficient Node.JS LocalStorage implementation",
   "main": "lib/index.js",
-  "type": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
