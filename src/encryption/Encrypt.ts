@@ -1,22 +1,12 @@
 import crypto, { Cipher } from 'crypto';
 import Encryption from './Encryption';
-import { algorithm, encoding, separator } from './constants';
 
 const iv = Buffer.alloc(16);
 
 /**
  * Encrypts given data into the {@link encoding.output} encoding
  */
-class Encrypt implements Encryption {
-  /**
-   * The key for the cipher - same key needs to be passed to the decipher
-   */
-  public readonly key: Buffer;
-
-  constructor(key: Buffer) {
-    this.key = key;
-  }
-
+class Encrypt extends Encryption {
   /**
    * Encrypts a given string
    * @param {string} str The string to encrypt
@@ -25,10 +15,11 @@ class Encrypt implements Encryption {
   public string(str: string): string {
     const { cipher } = this;
 
-    const encrypted =
-      cipher.update(str, encoding.input, encoding.output) + cipher.final(encoding.output);
+    const { input, output } = this.encryption.encoding;
 
-    return encrypted + separator;
+    const encrypted = cipher.update(str, input, output) + cipher.final(output);
+
+    return encrypted + this.encryption.separator;
   }
 
   /**
@@ -36,7 +27,7 @@ class Encrypt implements Encryption {
    * @type {Cipher}
    */
   get cipher(): Cipher {
-    return crypto.createCipheriv(algorithm.type, this.key, iv);
+    return crypto.createCipheriv(this.encryption.algorithm.type, this.key, iv);
   }
 }
 
