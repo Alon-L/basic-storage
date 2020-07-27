@@ -85,7 +85,7 @@ class Logger {
 
     for await (const line of rl) {
       // Yield the decrypted log line
-      yield this.decrypt.string(line.toString());
+      yield this.decrypt.string(line);
     }
   }
 
