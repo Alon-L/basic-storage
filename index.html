@@ -62,6 +62,75 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<a href="#basic-storage----" id="basic-storage----" style="color: inherit; text-decoration: none;">
+					<h1>basic-storage <img src="https://img.shields.io/npm/v/basic-storage" alt="Version"> <img src="https://img.shields.io/node/v/basic-storage" alt="Node Version"> <img src="https://github.com/Alon-L/basic-storage/workflows/Test/badge.svg" alt="Test"> <img src="https://github.com/Alon-L/basic-storage/workflows/Deploy/badge.svg" alt="Deploy"></h1>
+				</a>
+				<p>Lite and efficient Node.JS LocalStorage implementation.</p>
+				<p>Store data locally easily and securely with a simple, yet powerful API.</p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Storage } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;basic-storage&#x27;</span>);
+
+<span class="hljs-keyword">const</span> storage = <span class="hljs-keyword">new</span> Storage({ <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;PASSWORD&#x27;</span>, <span class="hljs-attr">salt</span>: <span class="hljs-string">&#x27;SALT&#x27;</span> }); <span class="hljs-comment">// Create a new storage instance, replace with your own password and salt</span>
+
+<span class="hljs-keyword">await</span> storage.load(); <span class="hljs-comment">// Load the last session onto this storage instance</span>
+
+storage.hasItem(<span class="hljs-string">&#x27;foo&#x27;</span>); <span class="hljs-comment">// false</span>
+
+storage.setItem(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>);
+
+storage.getItem(<span class="hljs-string">&#x27;foo&#x27;</span>); <span class="hljs-comment">// &#x27;bar&#x27;</span>
+
+storage.size; <span class="hljs-comment">// 1</span>
+
+<span class="hljs-comment">// The storage will be restored to this exact state after reloading your application</span></code></pre>
+				<a href="#how-it-works" id="how-it-works" style="color: inherit; text-decoration: none;">
+					<h2>How It Works</h2>
+				</a>
+				<p>All saved data is cached in the memory for improved efficiency.</p>
+				<p>After dispatching a write operation (setItem, removeItem or clear), a <a href="#log-line">log line</a> will be saved to the encrypted <a href="#logs-file">logs file</a>.</p>
+				<p>When calling the <a href="https://alon-l.github.io/basic-storage/classes/storage.html#load">Storage.load method</a>,
+					the storage will iterate over the log lines and cache the data they represent.
+					Once all the log lines are read, we can safely save the cached data to the <a href="#storage-file">storage file</a>.
+				Afterwards, we will clear the logs file since it has no use anymore, and repeat the process for the next application&#39;s life cycle.</p>
+				<a href="#storage-file" id="storage-file" style="color: inherit; text-decoration: none;">
+					<h3>Storage File</h3>
+				</a>
+				<p>The storage file, defaultly called <code>db</code>, contains encrypted JSON data from all the previous life cycles of the application.
+				The data is encrypted and encoded using your selected encoding mechanism (<code>base64</code> - (default) most recommended; <code>hex</code>; <code>binary</code> - least recommended).</p>
+				<a href="#storage-file-checksum" id="storage-file-checksum" style="color: inherit; text-decoration: none;">
+					<h4>Storage File Checksum</h4>
+				</a>
+				<p>Due to the importancy of the storage file, it will go through a checksum validation to see whether it has been changed from the
+				application&#39;s last life cycle.</p>
+				<p>The checksum file, defaultly called <code>db.md5</code>, uses the md5 hashing mechanism to generate a hash for the file&#39;s content.</p>
+				<p>The two files are compared every time the storage file needs to be read from - when using
+				<a href="https://alon-l.github.io/basic-storage/classes/storage.html#load">Storage.load</a></p>
+				<a href="#logs-file" id="logs-file" style="color: inherit; text-decoration: none;">
+					<h3>Logs File</h3>
+				</a>
+				<p>The logs file, defaultly called <code>db.logs</code>, contains <a href="#log-line">log lines</a> for all the write operations done in the last life cycle of the application.
+				The file is encrypted and encoded using your selected encoding mechanism (<code>base64</code> - (default) most recommended; <code>hex</code>; <code>binary</code> - least recommended).</p>
+				<p>When loading your previous session (using <a href="https://alon-l.github.io/basic-storage/classes/storage.html#load">Storage.load</a>),
+				the parser will iterate over the encrypted log lines <strong>reversely</strong>, decrypt them, and parse the lines to retrieve the data they contain into the cache.</p>
+				<a href="#log-line" id="log-line" style="color: inherit; text-decoration: none;">
+					<h4>Log Line</h4>
+				</a>
+				<p>The log line represts a writing operation done in the last life cycle of the application.
+				All log lines are encrypted line by line.</p>
+				<a href="#log-line-formats" id="log-line-formats" style="color: inherit; text-decoration: none;">
+					<h5>Log Line Formats</h5>
+				</a>
+				<p>The decrypted log line will follow one of the next formats:</p>
+				<ul>
+					<li><p>Setting an item: <code>S:&quot;&lt;KEY&gt;&quot;:&lt;VALUE&gt;</code>
+						Where <code>KEY</code> is the item&#39;s key, and <code>VALUE</code> is the stringified item&#39;s value.</p>
+					</li>
+					<li><p>Removing an item: <code>R:&quot;&lt;KEY&quot;&gt;</code>
+						Where <code>KEY</code> is the item&#39;s key.</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
