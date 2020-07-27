@@ -70,6 +70,8 @@
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
+				<p>Install the package.</p>
+				<pre><code>$ npm <span class="hljs-keyword">install</span> basic-<span class="hljs-keyword">storage</span></code></pre><p>Create a Storage instance and load its last state.</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Storage } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;basic-storage&#x27;</span>);
 
 <span class="hljs-keyword">const</span> storage = <span class="hljs-keyword">new</span> Storage({ <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;PASSWORD&#x27;</span>, <span class="hljs-attr">salt</span>: <span class="hljs-string">&#x27;SALT&#x27;</span> }); <span class="hljs-comment">// Create a new storage instance, replace with your own password and salt</span>
