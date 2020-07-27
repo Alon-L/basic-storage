@@ -20,8 +20,8 @@ class StorageFile extends ChecksumDependentFile {
 
     this.storage = storage;
 
-    this.encrypt = new Encrypt(this.storage.key);
-    this.decrypt = new Decrypt(this.storage.key);
+    this.encrypt = new Encrypt(this.storage.key, this.storage.options.encryption);
+    this.decrypt = new Decrypt(this.storage.key, this.storage.options.encryption);
   }
 
   /**
