@@ -90,7 +90,7 @@ export class Storage<TValue = unknown> {
    */
   private readonly removedKeys: string[] = [];
 
-  constructor(options: StorageOptions, auth: LoggerAuth) {
+  constructor(auth: LoggerAuth, options?: StorageOptions) {
     this.cache = new Map<string, TValue>();
 
     this.options = {
@@ -107,7 +107,7 @@ export class Storage<TValue = unknown> {
         },
         encoding,
         separator,
-        ...options.encryption,
+        ...options?.encryption,
       },
     };
 

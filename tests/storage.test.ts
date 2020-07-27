@@ -1,14 +1,13 @@
 import assert = require('assert');
-import { Storage, StorageOptions, LoggerAuth } from '../src';
+import { Storage, LoggerAuth } from '../src';
 
-const options: StorageOptions = {};
 const auth: LoggerAuth = { password: 'HelloWorld!', salt: 'salt' };
 
 let storage: Storage;
 
 beforeEach(() => {
   // Initialize a new storage after every test
-  storage = new Storage(options, auth);
+  storage = new Storage(auth);
 });
 
 test('storage setItem', () => {
