@@ -1,5 +1,7 @@
 import LogSerializer, { Operation } from './LogSerializer';
 import Logger, { LoggerAuth, LoggerOptions } from './Logger';
+import { EncryptionOptions } from './encryption/Encryption';
+import { algorithm, encoding, separator } from './encryption/constants';
 import { genKey } from './encryption/utils';
 import StorageFile from './files/StorageFile';
 
@@ -21,6 +23,11 @@ export interface StorageOptions {
    * The parser used for stringifying and parsing the saved logs
    */
   parser?: JSON;
+
+  /**
+   * The options for the encryption of the log file and storage file
+   */
+  encryption?: EncryptionOptions;
 }
 
 /**
@@ -79,21 +86,28 @@ class Storage<TValue = unknown> {
   private readonly removedKeys: string[] = [];
 
   constructor(options: StorageOptions, auth: LoggerAuth) {
-    // Generate a key using the given password and salt
-    this.key = genKey(auth.password, auth.salt);
-
     this.cache = new Map<string, TValue>();
 
-    this.logger = new Logger(options, this.key);
-
-    this.file = new StorageFile(this, options.filename || './db');
-
     this.options = {
-      filename: this.file.filename,
-      logger: this.logger.options,
+      filename: './db',
+      logger: {
+        filename: './db.logs',
+      },
       parser: JSON,
+      encryption: {
+        algorithm,
+        encoding,
+        separator,
+      },
       ...options,
     };
+
+    // Generate a key using the given password and salt
+    this.key = genKey(auth.password, auth.salt, this.options.encryption.algorithm.keylen);
+
+    this.logger = new Logger(this.options.logger, this.options.encryption, this.key);
+
+    this.file = new StorageFile(this, this.options.filename);
 
     this.serializer = new LogSerializer(this.options.parser);
 
@@ -192,7 +206,7 @@ class Storage<TValue = unknown> {
    * @returns {Promise<void>}
    */
   public async saveJSON(): Promise<void> {
-    await this.file.write(JSON.stringify(this.toJSON()));
+    await this.file.write(JSON.stringify(this));
 
     // Clear the log file since it has no use anymore
     if (!(await this.logger.file.exists())) return;
