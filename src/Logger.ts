@@ -1,7 +1,5 @@
-import Decrypt from './encryption/Decrypt';
-import Encrypt from './encryption/Encrypt';
-import { EncryptionOptions } from './encryption/Encryption';
-import File from './files/File';
+import { Decrypt, Encrypt, EncryptionOptions } from './encryption';
+import { File } from './files';
 
 /**
  * Options for the Logger instance
@@ -32,7 +30,7 @@ export interface LoggerAuth {
  * Handles the writing and reading of log lines.
  * All lines are encrypted using {@link Encryption}
  */
-class Logger {
+export class Logger {
   /**
    * The file that stores all the logs
    */
@@ -84,5 +82,3 @@ class Logger {
     }
   }
 }
-
-export default Logger;

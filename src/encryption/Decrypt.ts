@@ -1,12 +1,12 @@
 import crypto, { Decipher } from 'crypto';
-import Encryption from './Encryption';
+import { Encryption } from './Encryption';
 
 const iv = Buffer.alloc(16);
 
 /**
  * Decrypts given data into the {@link encoding.input} encoding
  */
-class Decrypt extends Encryption {
+export class Decrypt extends Encryption {
   /**
    * Decrypts a given string
    * @param {string} str The string to decrypt
@@ -28,5 +28,3 @@ class Decrypt extends Encryption {
     return crypto.createDecipheriv(this.encryption.algorithm.type, this.key, iv);
   }
 }
-
-export default Decrypt;

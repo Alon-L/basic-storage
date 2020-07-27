@@ -1,4 +1,4 @@
-import Storage from '../src/Storage';
+import { Storage } from '../src';
 
 (async function () {
   const storage = await new Storage({}, { password: 'A', salt: 'A' }).load();
@@ -7,5 +7,4 @@ import Storage from '../src/Storage';
 
   await storage.setItem('a', 1);
   await storage.setItem('b', 2);
-  await storage.removeItem('a');
 })();

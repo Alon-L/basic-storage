@@ -1,12 +1,12 @@
 import crypto, { Cipher } from 'crypto';
-import Encryption from './Encryption';
+import { Encryption } from './Encryption';
 
 const iv = Buffer.alloc(16);
 
 /**
  * Encrypts given data into the {@link encoding.output} encoding
  */
-class Encrypt extends Encryption {
+export class Encrypt extends Encryption {
   /**
    * Encrypts a given string
    * @param {string} str The string to encrypt
@@ -30,5 +30,3 @@ class Encrypt extends Encryption {
     return crypto.createCipheriv(this.encryption.algorithm.type, this.key, iv);
   }
 }
-
-export default Encrypt;

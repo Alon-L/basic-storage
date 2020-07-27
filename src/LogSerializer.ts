@@ -23,7 +23,7 @@ const operationLength = 2;
 /**
  * Serializes and deserializes log lines
  */
-class LogSerializer<TValue> {
+export class LogSerializer<TValue> {
   /**
    * The parser used for the log lines
    */
@@ -90,5 +90,3 @@ class LogSerializer<TValue> {
     return matches.groups.key;
   }
 }
-
-export default LogSerializer;

@@ -25,7 +25,7 @@ export interface EncryptionOptions {
  * Interface for {@link Encrypt} and {@link Decrypt}.
  * Contains general properties and methods used for encryption
  */
-abstract class Encryption {
+export abstract class Encryption {
   /**
    * The key for the cipher / decipher
    */
@@ -49,5 +49,3 @@ abstract class Encryption {
    */
   abstract string(str: string): string;
 }
-
-export default Encryption;

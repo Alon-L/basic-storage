@@ -18,7 +18,7 @@ export const checksum = {
 /**
  * Handles checksum generation
  */
-class Checksum {
+export class Checksum {
   /**
    * Generates a checksum hash for a string
    * @param {string} str The string to generate a checksum for
@@ -28,5 +28,3 @@ class Checksum {
     return crypto.createHash(checksum.algorithm).update(str, 'utf8').digest(checksum.encoding);
   }
 }
-
-export default Checksum;

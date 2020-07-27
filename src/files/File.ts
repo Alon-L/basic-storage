@@ -3,7 +3,7 @@ import { promises as fs, constants } from 'fs';
 /**
  * Represents a file
  */
-class File {
+export class File {
   /**
    * The name of the file
    */
@@ -60,5 +60,3 @@ class File {
     return fs.readFile(this.filename, 'utf8');
   }
 }
-
-export default File;

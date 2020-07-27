@@ -1,10 +1,10 @@
-import File from './File';
-import Checksum, { checksum } from '../encryption/Checksum';
+import { File } from './File';
+import { Checksum, checksum } from '../encryption';
 
 /**
  * Represents a file that has a validator checksum file
  */
-class ChecksumDependentFile extends File {
+export class ChecksumDependentFile extends File {
   /**
    * The checksum file for this file
    */
@@ -65,5 +65,3 @@ class ChecksumDependentFile extends File {
     return this.checksum.write(Checksum.generate(data));
   }
 }
-
-export default ChecksumDependentFile;

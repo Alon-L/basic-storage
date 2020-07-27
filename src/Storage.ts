@@ -1,9 +1,7 @@
-import LogSerializer, { Operation } from './LogSerializer';
-import Logger, { LoggerAuth, LoggerOptions } from './Logger';
-import { EncryptionOptions } from './encryption/Encryption';
-import { algorithm, encoding, separator } from './encryption/constants';
-import { genKey } from './encryption/utils';
-import StorageFile from './files/StorageFile';
+import { LogSerializer, Operation } from './LogSerializer';
+import { Logger, LoggerAuth, LoggerOptions } from './Logger';
+import { EncryptionOptions, algorithm, encoding, separator, genKey } from './encryption';
+import { StorageFile } from './files';
 
 /**
  * Options for initializing a {@link Storage} instance
@@ -49,7 +47,7 @@ export interface StoragePair<T> {
  * The main interface of the library.
  * Capable of caching, saving and loading storage data
  */
-class Storage<TValue = unknown> {
+export class Storage<TValue = unknown> {
   /**
    * The key used for encrypting the log file and storage file
    */
@@ -291,5 +289,3 @@ class Storage<TValue = unknown> {
     }, {} as Record<string, TValue>);
   }
 }
-
-export default Storage;

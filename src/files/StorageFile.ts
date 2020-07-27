@@ -1,12 +1,11 @@
-import ChecksumDependentFile from './ChecksumDependentFile';
-import Storage from '../Storage';
-import Decrypt from '../encryption/Decrypt';
-import Encrypt from '../encryption/Encrypt';
+import { ChecksumDependentFile } from './ChecksumDependentFile';
+import { Storage } from '../Storage';
+import { Decrypt, Encrypt } from '../encryption';
 
 /**
  * Represents a storage file
  */
-class StorageFile extends ChecksumDependentFile {
+export class StorageFile extends ChecksumDependentFile {
   /**
    * The storage instance associated to this file
    */
@@ -43,5 +42,3 @@ class StorageFile extends ChecksumDependentFile {
     return this.decrypt.string(content);
   }
 }
-
-export default StorageFile;
