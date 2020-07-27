@@ -276,9 +276,9 @@ export class Storage<TValue = unknown> {
    * @returns {void}
    */
   public async clear(): Promise<void> {
-    await this.logger.file.clear();
-    await this.cache.clear();
     await this.saveJSON();
+    await this.logger.file.clear();
+    this.cache.clear();
   }
 
   /**
