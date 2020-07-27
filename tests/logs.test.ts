@@ -1,7 +1,12 @@
 import Logger from '../src/Logger';
+import { algorithm, encoding, separator } from '../src/encryption/constants';
 import { genKey } from '../src/encryption/utils';
 
-const logger = new Logger({}, genKey('HelloWorld!', 'salt'));
+const logger = new Logger(
+  { filename: './db.logs' },
+  { algorithm, encoding, separator },
+  genKey('HelloWorld!', 'salt', algorithm.keylen),
+);
 
 const logs = ['Hello!', 'Hello 2!', 'Hello 3!'];
 
