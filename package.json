@@ -1,7 +1,7 @@
 {
-  "name": "storage",
+  "name": "basic-storage",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lite and efficient Node.JS LocalStorage implementation",
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
   "scripts": {
@@ -19,8 +19,14 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Basic Storage",
+    "Basic DB",
+    "JSON Storage",
+    "Local Storage",
+    "Database"
+  ],
+  "author": "Alon Livne",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Alon-L/storage/issues"
