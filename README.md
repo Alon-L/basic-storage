@@ -4,6 +4,13 @@ Lite and efficient Node.JS LocalStorage implementation.
 Store data locally easily and securely with a simple, yet powerful API.
 
 ## Usage
+Install the package.
+```
+$ npm install basic-storage
+```
+
+Create a Storage instance and load its last state.
+
 ```js
 const { Storage } = require('basic-storage');
 
