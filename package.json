@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/Alon-L/storage.git"
   },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
