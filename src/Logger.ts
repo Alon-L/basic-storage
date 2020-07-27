@@ -1,5 +1,6 @@
 import Decrypt from './encryption/Decrypt';
 import Encrypt from './encryption/Encrypt';
+import { EncryptionOptions } from './encryption/Encryption';
 import File from './files/File';
 
 /**
@@ -9,7 +10,7 @@ export interface LoggerOptions {
   /**
    * The name of the logs file
    */
-  filename?: string;
+  filename: string;
 }
 
 /**
@@ -40,21 +41,18 @@ class Logger {
   /**
    * General options for this instance
    */
-  public readonly options: Required<LoggerOptions>;
+  public readonly options: LoggerOptions;
 
   private readonly encrypt: Encrypt;
   private readonly decrypt: Decrypt;
 
-  constructor(options: LoggerOptions, key: Buffer) {
-    this.file = new File(options.filename || './db.logs');
+  constructor(options: LoggerOptions, encryption: EncryptionOptions, key: Buffer) {
+    this.options = options;
 
-    this.options = {
-      filename: this.file.filename,
-      ...options,
-    };
+    this.file = new File(this.options.filename);
 
-    this.encrypt = new Encrypt(key);
-    this.decrypt = new Decrypt(key);
+    this.encrypt = new Encrypt(key, encryption);
+    this.decrypt = new Decrypt(key, encryption);
   }
 
   /**
