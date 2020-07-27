@@ -39,6 +39,9 @@ export class StorageFile extends ChecksumDependentFile {
   public async read(): Promise<string> {
     const content = await super.read();
 
-    return this.decrypt.string(content);
+    // Get rid of the new line character
+    const modified = content.endsWith('\n') ? content.slice(0, -1) : content;
+
+    return this.decrypt.string(modified);
   }
 }
