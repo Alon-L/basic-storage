@@ -20,7 +20,12 @@ class Storage<TValue = unknown> {
    * The parser for the storage.
    * Stringifies and parses the values received in {@link setItem}
    */
-  public parser: JSON;
+  private readonly serializer: LogSerializer<TValue>;
+
+  /**
+   * Array of keys that were removed from the Storage in the log file
+   */
+  private readonly removedKeys: string[] = [];
 
   constructor(options: Partial<StorageOptions>, auth: LoggerAuth) {
     this.cache = new Map<string, TValue>();
@@ -43,12 +48,15 @@ class Storage<TValue = unknown> {
    * Adds an item identified by a key to the storage
    * @param {string} key The identifier of the item
    * @param {T} value The item value
+   * @param {boolean} log Whether to log the pair item to the log file
    * @returns {Promise<void>}
    */
-  public async setItem<T extends TValue>(key: string, value: T): Promise<void> {
+  public async setItem<T extends TValue>(key: string, value: T, log = true): Promise<void> {
     this.cache.set(key, value);
 
-    await this.logger.write(this.serialize(key, value));
+    if (log) {
+      await this.logger.write(Operation.Set + this.serializer.serializeSet(key, value));
+    }
   }
 
   /**
