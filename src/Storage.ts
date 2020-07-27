@@ -25,8 +25,15 @@ export interface StorageOptions {
   /**
    * The options for the encryption of the log file and storage file
    */
-  encryption?: EncryptionOptions;
+  encryption?: Partial<EncryptionOptions>;
 }
+
+/**
+ * Full storage options, stored in {@link Storage.options}
+ */
+export type FullStorageOptions = Required<StorageOptions> & {
+  encryption: Required<EncryptionOptions>;
+};
 
 /**
  * Type for key and value pairs found in the storage cache
@@ -66,7 +73,7 @@ export class Storage<TValue = unknown> {
   /**
    * The options for this storage instance
    */
-  public readonly options: Required<StorageOptions>;
+  public readonly options: FullStorageOptions;
 
   /**
    * The file that contains the storage data
@@ -88,16 +95,20 @@ export class Storage<TValue = unknown> {
 
     this.options = {
       filename: './db',
+      parser: JSON,
       logger: {
         filename: './db.logs',
       },
-      parser: JSON,
+      ...options,
       encryption: {
-        algorithm,
+        algorithm: {
+          type: algorithm.type,
+          keylen: algorithm.keylen,
+        },
         encoding,
         separator,
+        ...options.encryption,
       },
-      ...options,
     };
 
     // Generate a key using the given password and salt
