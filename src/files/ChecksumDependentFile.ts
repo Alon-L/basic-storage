@@ -1,5 +1,5 @@
 import File from './File';
-import Checksum, { algorithm } from '../encryption/Checksum';
+import Checksum, { checksum } from '../encryption/Checksum';
 
 /**
  * Represents a file that has a validator checksum file
@@ -18,7 +18,7 @@ class ChecksumDependentFile extends File {
   constructor(filename: string) {
     super(filename);
 
-    this.checksumName = `${this.filename}.${algorithm}`;
+    this.checksumName = `${this.filename}.${checksum.algorithm}`;
     this.checksum = new File(this.checksumName);
   }
 
