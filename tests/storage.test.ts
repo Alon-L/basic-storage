@@ -1,6 +1,5 @@
 import assert = require('assert');
-import { LoggerAuth } from '../src/Logger';
-import Storage, { StorageOptions } from '../src/Storage';
+import { Storage, StorageOptions, LoggerAuth } from '../src';
 
 const options: StorageOptions = {};
 const auth: LoggerAuth = { password: 'HelloWorld!', salt: 'salt' };

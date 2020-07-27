@@ -1,6 +1,5 @@
-import Logger from '../src/Logger';
-import { algorithm, encoding, separator } from '../src/encryption/constants';
-import { genKey } from '../src/encryption/utils';
+import { Logger } from '../src';
+import { algorithm, encoding, separator, genKey } from '../src/encryption';
 
 const logger = new Logger(
   { filename: './db.logs' },
