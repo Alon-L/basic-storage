@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Logger | storage</title>
+	<title>Encryption | storage</title>
 	<meta name="description" content="Documentation for storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="logger.html">Logger</a>
+					<a href="encryption.html">Encryption</a>
 				</li>
 			</ul>
-			<h1>Class Logger</h1>
+			<h1>Class Encryption</h1>
 		</div>
 	</div>
 </header>
@@ -67,8 +67,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Handles the writing and reading of log lines.
-						All lines are encrypted using <a href="encryption.html">Encryption</a></p>
+						<p>Interface for <a href="encrypt.html">Encrypt</a> and <a href="decrypt.html">Decrypt</a>.
+						Contains general properties and methods used for encryption</p>
 					</div>
 				</div>
 			</section>
@@ -76,7 +76,15 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Logger</span>
+						<span class="target">Encryption</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="decrypt.html" class="tsd-signature-type">Decrypt</a>
+							</li>
+							<li>
+								<a href="encrypt.html" class="tsd-signature-type">Encrypt</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -87,21 +95,19 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="logger.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="encryption.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="logger.html#file" class="tsd-kind-icon">file</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="logger.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="encryption.html#key" class="tsd-kind-icon">key</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#read" class="tsd-kind-icon">read</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#write" class="tsd-kind-icon">write</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="encryption.html#string" class="tsd-kind-icon">string</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,28 +119,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Logger<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/loggeroptions.html" class="tsd-signature-type">LoggerOptions</a>, encryption<span class="tsd-signature-symbol">: </span><a href="../interfaces/encryptionoptions.html" class="tsd-signature-type">EncryptionOptions</a>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="logger.html" class="tsd-signature-type">Logger</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Encryption<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, encryption<span class="tsd-signature-symbol">: </span><a href="../interfaces/encryptionoptions.html" class="tsd-signature-type">EncryptionOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="encryption.html" class="tsd-signature-type">Encryption</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Logger.ts#L47">Logger.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L37">encryption/Encryption.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <a href="../interfaces/loggeroptions.html" class="tsd-signature-type">LoggerOptions</a></h5>
+									<h5>key: <span class="tsd-signature-type">Buffer</span></h5>
 								</li>
 								<li>
 									<h5>encryption: <a href="../interfaces/encryptionoptions.html" class="tsd-signature-type">EncryptionOptions</a></h5>
 								</li>
-								<li>
-									<h5>key: <span class="tsd-signature-type">Buffer</span></h5>
-								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="logger.html" class="tsd-signature-type">Logger</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="encryption.html" class="tsd-signature-type">Encryption</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -142,32 +145,17 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="file" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> file</h3>
-					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <a href="file.html" class="tsd-signature-type">File</a></div>
+					<a name="key" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> key</h3>
+					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Logger.ts#L39">Logger.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L32">encryption/Encryption.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The file that stores all the logs</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="options" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/loggeroptions.html" class="tsd-signature-type">LoggerOptions</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Logger.ts#L44">Logger.ts:44</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>General options for this instance</p>
+							<p>The key for the cipher / decipher</p>
 						</div>
 					</div>
 				</section>
@@ -175,56 +163,33 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="read" class="tsd-anchor"></a>
-					<h3>read</h3>
+					<a name="string" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> string</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">read<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AsyncGenerator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">string<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Logger.ts#L71">Logger.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L50">encryption/Encryption.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Starts reading from the log file.
-									The content is reversely read line by line</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">AsyncGenerator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="write" class="tsd-anchor"></a>
-					<h3>write</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">write<span class="tsd-signature-symbol">(</span>log<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Logger.ts#L63">Logger.ts:63</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Encrypts and writes a log line to the log file</p>
+									<p>Encrypts / decrypts a given string</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>log: <span class="tsd-signature-type">string</span></h5>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The log line</p>
+										<p>The string to encrypt / decrypt</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -255,39 +220,33 @@
 					<li class=" tsd-kind-class">
 						<a href="encrypt.html" class="tsd-kind-icon">Encrypt</a>
 					</li>
-					<li class=" tsd-kind-class">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
 						<a href="encryption.html" class="tsd-kind-icon">Encryption</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="encryption.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="encryption.html#key" class="tsd-kind-icon">key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="encryption.html#string" class="tsd-kind-icon">string</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="file.html" class="tsd-kind-icon">File</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="logserializer.html" class="tsd-kind-icon">Log<wbr>Serializer</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="logger.html" class="tsd-kind-icon">Logger</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="logger.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="logger.html#file" class="tsd-kind-icon">file</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="logger.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logger.html#read" class="tsd-kind-icon">read</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="logger.html#write" class="tsd-kind-icon">write</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="storage.html" class="tsd-kind-icon">Storage</a>
 					</li>

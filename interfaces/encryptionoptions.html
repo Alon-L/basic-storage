@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>StorageOptions | storage</title>
+	<title>EncryptionOptions | storage</title>
 	<meta name="description" content="Documentation for storage">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="storageoptions.html">StorageOptions</a>
+					<a href="encryptionoptions.html">EncryptionOptions</a>
 				</li>
 			</ul>
-			<h1>Interface StorageOptions</h1>
+			<h1>Interface EncryptionOptions</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Options for initializing a <a href="../classes/storage.html">Storage</a> instance</p>
+						<p>The options for the encryption of the log file and storage file</p>
 					</div>
 				</div>
 			</section>
@@ -75,7 +75,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">StorageOptions</span>
+						<span class="target">EncryptionOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -86,10 +86,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="storageoptions.html#encryption" class="tsd-kind-icon">encryption</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="storageoptions.html#filename" class="tsd-kind-icon">filename</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="storageoptions.html#logger" class="tsd-kind-icon">logger</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="storageoptions.html#parser" class="tsd-kind-icon">parser</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="encryptionoptions.html#algorithm" class="tsd-kind-icon">algorithm</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="encryptionoptions.html#encoding" class="tsd-kind-icon">encoding</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="encryptionoptions.html#separator" class="tsd-kind-icon">separator</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,62 +97,48 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="encryption" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> encryption</h3>
-					<div class="tsd-signature tsd-kind-icon">encryption<span class="tsd-signature-symbol">:</span> <a href="encryptionoptions.html" class="tsd-signature-type">EncryptionOptions</a></div>
+					<a name="algorithm" class="tsd-anchor"></a>
+					<h3>algorithm</h3>
+					<div class="tsd-signature tsd-kind-icon">algorithm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">algorithm</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Storage.ts#L30">Storage.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L10">encryption/Encryption.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The options for the encryption of the log file and storage file</p>
+							<p>The information about the algorithm being used for encryption</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filename" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> filename</h3>
-					<div class="tsd-signature tsd-kind-icon">filename<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="encoding" class="tsd-anchor"></a>
+					<h3>encoding</h3>
+					<div class="tsd-signature tsd-kind-icon">encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">encoding</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Storage.ts#L15">Storage.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L15">encryption/Encryption.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the storage output file</p>
+							<p>The encodings used for encryption and decryption</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="logger" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> logger</h3>
-					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="loggeroptions.html" class="tsd-signature-type">LoggerOptions</a></div>
+					<a name="separator" class="tsd-anchor"></a>
+					<h3>separator</h3>
+					<div class="tsd-signature tsd-kind-icon">separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Storage.ts#L20">Storage.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/encryption/Encryption.ts#L21">encryption/Encryption.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The options for the storage&#39;s logger</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="parser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parser</h3>
-					<div class="tsd-signature tsd-kind-icon">parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">JSON</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Alon-L/storage/blob/2713fdb/src/Storage.ts#L25">Storage.ts:25</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The parser used for stringifying and parsing the saved logs</p>
+							<p>The separator string between every log.
+							Note: the separator <em>MUST</em> be unable to appear in the encoding output you choose to use</p>
 						</div>
 					</div>
 				</section>
@@ -202,36 +187,33 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/storagefile.html" class="tsd-kind-icon">Storage<wbr>File</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="encryptionoptions.html" class="tsd-kind-icon">Encryption<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="encryptionoptions.html#algorithm" class="tsd-kind-icon">algorithm</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="encryptionoptions.html#encoding" class="tsd-kind-icon">encoding</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="encryptionoptions.html#separator" class="tsd-kind-icon">separator</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="loggerauth.html" class="tsd-kind-icon">Logger<wbr>Auth</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="loggeroptions.html" class="tsd-kind-icon">Logger<wbr>Options</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="storageoptions.html" class="tsd-kind-icon">Storage<wbr>Options</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="storageoptions.html#encryption" class="tsd-kind-icon">encryption</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="storageoptions.html#filename" class="tsd-kind-icon">filename</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="storageoptions.html#logger" class="tsd-kind-icon">logger</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="storageoptions.html#parser" class="tsd-kind-icon">parser</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="storagepair.html" class="tsd-kind-icon">Storage<wbr>Pair</a>
 					</li>
