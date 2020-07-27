@@ -1,14 +1,19 @@
 import crypto, { HexBase64Latin1Encoding } from 'crypto';
 
 /**
- * The type of algorithm to use for the checksum hash
+ * The data for the checksum generation
  */
-export const algorithm = 'md5';
+export const checksum = {
+  /**
+   * The type of algorithm to use for the checksum hash
+   */
+  algorithm: 'md5',
 
-/**
- * The type of encoding to store the checksum hash in
- */
-export const encoding: HexBase64Latin1Encoding = 'base64';
+  /**
+   * The type of encoding to store the checksum hash in
+   */
+  encoding: 'base64' as HexBase64Latin1Encoding,
+};
 
 /**
  * Handles checksum generation
@@ -20,7 +25,7 @@ class Checksum {
    * @returns {string}
    */
   static generate(str: string): string {
-    return crypto.createHash(algorithm).update(str, 'utf8').digest(encoding);
+    return crypto.createHash(checksum.algorithm).update(str, 'utf8').digest(checksum.encoding);
   }
 }
 
