@@ -231,7 +231,7 @@ export class Storage<TValue = unknown> {
    * @returns {T | null}
    */
   public getItem<T extends TValue>(key: string): T | null {
-    return this.cache.get(key) as T || null;
+    return (this.cache.get(key) as T) || null;
   }
 
   /**
